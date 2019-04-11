@@ -1,0 +1,212 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Project Demo",
+    "version": "1.0.0",
+    "title": "Swagger Project",
+    "termsOfService": "http://swagger.io/terms/",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/project",
+  "tags": [
+    {
+      "name": "project",
+      "description": "Everything about your Project"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/add": {
+      "post": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Add a new project",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Project object that needs to be added to the db",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/project"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "/{id}": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get project by id",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Project id that needs to be updated"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "/list": {
+      "get": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Get all project",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "#/definitions/User"
+          }
+        }
+      }
+    },
+    "/update/{id}": {
+      "put": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Update an existing project",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Project object to be saved from the db"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Project object that needs to be updated in the db",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/project"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "#/definitions/User"
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          }
+        }
+      }
+    },
+    "/delete/{id}": {
+      "delete": {
+        "tags": [
+          "project"
+        ],
+        "summary": "Delete a particular project of given id",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "Project id that is to be deleted"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "#/definitions/User"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "project": {
+      "type": "object",
+      "required": [
+        "taskName",
+        "description",
+        "priority",
+        "completed"
+      ],
+      "properties": {
+        "taskName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Medium",
+            "Low"
+          ]
+        },
+        "completed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ApiResponse": {
+      "type": "object",
+      "properties": {
+        "proj": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}
